@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Ventas</title>
+	
+	<link th:href="@{/general.css}" rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
+	<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap5.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+	<div id="sidebar">
+	    <div id="header">
+			<div class=" p-1 d-flex align-items-center justify-content-center">
+		        <a class="text-decoration-none text-white fs-4 d-none d-sm-inline btn btn-outline-warning">SASTRERÍA JG</a>
+		    </div>
+	    </div>
+		<ul class="nav nav-pills flex-column mt-3">
+	        <li class="nav-item py-2 py-sm-2">
+	            <a th:href="@{/menu}" class="nav-link text-white">
+	                <i class="fs-5 fas fa-home mr-2"></i><span class="fs-5 ms-3 d-none d-sm-inline">Inicio</span>
+	            </a>
+	        </li>
+	        <li class="nav-item py-2 py-sm-2">
+	            <a th:href="@{/empleado}" class="nav-link text-white ">
+	                <i class="fs-5 fas fa-user-tie"></i><span class="fs-5 ms-3 d-none d-sm-inline">Empleado</span>
+	            </a>
+	        </li>
+	        <li class="nav-item py-2 py-sm-2">
+	            <a th:href="@{/proveedor}" class="nav-link text-white">
+	                <i class="fs-5 fa fa-truck"></i><span class="fs-5 ms-3 d-none d-sm-inline">Proveedor</span>
+	            </a>
+	        </li>
+	        <li class="nav-item py-2 py-sm-2">
+	            <a th:href="@{/cliente}" class="nav-link text-white">
+	                <i class="fs-5 fa fa-solid fa-users"></i><span class="fs-5 ms-3 d-none d-sm-inline">Cliente</span>
+	            </a>
+	        </li>
+	        <li class="nav-item py-2 py-sm-2">
+	            <a th:href="@{/producto}" class="nav-link text-white">
+	                <i class="fs-5 fa fa-box"></i><span class="fs-5 ms-3 d-none d-sm-inline">Producto</span>
+	            </a>
+	        </li>
+	        <li class="nav-item py-2 py-sm-2">
+	            <a th:href="@{/venta}" class="nav-link text-white">
+	                <i class="fs-5 fa fa-tshirt"></i><span class="fs-5 ms-3 d-none d-sm-inline">Venta</span>
+	            </a>
+	        </li>
+	        <li class="nav-item py-2 py-sm-2">
+	            <a th:href="@{/alquiler}" class="nav-link text-white">
+	                <i class="fs-5 fa fa-stopwatch"></i><span class="fs-5 ms-3 d-none d-sm-inline">Alquiler</span>
+	            </a>
+	        </li>
+	        <li class="nav-item py-2 py-sm-2">
+	            <a th:href="@{/pedido}" class="nav-link text-white">
+	                <i class="fs-5 fa fa-pencil-ruler"></i><span class="fs-5 ms-3 d-none d-sm-inline">Pedido</span>
+	            </a>
+	        </li>
+	        <li class="nav-item py-2 py-sm-2">
+	            <a th:href="@{/recibo}" class="nav-link text-white active_custom">
+	                <i class="fs-5 fa fa-file-invoice-dollar"></i><span class="fs-5 ms-3 d-none d-sm-inline">Recibo</span>
+	            </a>
+	        </li>
+	        <li class="nav-item py-2 py-sm-2 barra-abajo">
+	            <a th:href="@{/logout}" class="nav-link text-white">
+	                <i class="fs-5 fa fa-door-open"></i><span class="fs-5 ms-3 d-none d-sm-inline">Logout</span>
+	            </a>
+	        </li> 
+	    </ul>
+	</div>
+	
+	<div id="cuadrado">
+		<div id="content">
+			<div class="container m-1 d-flex justify-content-between align-items-center mb-4">
+			    <h1 class="m-0">Alquileres sin Recibo</h1>
+		        <a class="btn btn-secondary" id="master" th:href="@{/recibo/recibo_nuevo}">
+					<i class="fs-5 fa fa-backward"></i><span class="fs-5 ms-3 d-none d-sm-inline">Regresar</span>
+				</a>
+			</div>
+			<div class="container m-1">
+				<div class="card">
+					<div class="card-body">
+						<form th:each="alquiler : ${alquileresSinRecibo}" th:action="@{/recibo/agregar_al_carrito}" method="post">
+							<div class="col d-flex justify-content-center">
+								<input type="hidden" th:name="idTransaccion" th:value="${alquiler.Transaccion.idTransaccion}"/>
+								<div class="card text-center w-50 mt-4">
+									<div class="card-header" id="custom-background">
+										<h5 class="card-title mt-2 text-dark">ID Alquiler: <span th:text="${alquiler.transaccion.idOperacion}"></span></h5>
+									</div>
+								 	<div class="card-body">
+										 <div class="row justify-content-center">
+											<div class="form-group col-md-2 mt-3">
+												<label class="form-label">Transaccion:</label>
+											</div>
+											<div class="form-group col-lg-4 mt-2">
+												<input class="form-control" th:value="${alquiler.transaccion.idTransaccion}" readonly>
+											</div>
+										</div>
+										 
+							    		<div class="row justify-content-center">
+											<div class="form-group col-md-2 mt-3">
+												<label class="form-label">ID Cliente:</label>
+											</div>
+											<div class="form-group col-lg-4 mt-2">
+												<input class="form-control" th:value="${alquiler.cliente.idCliente}" readonly>
+											</div>
+										</div>
+										
+										<div class="row justify-content-center">
+											<div class="form-group col-md-2 mt-3">
+												<label class="form-label">Cliente:</label>
+											</div>
+											<div class="form-group col-lg-4 mt-2">
+												<input class="form-control" th:value="${alquiler.cliente.nombreCliente}" readonly>
+											</div>
+										</div>
+										
+										<div class="row justify-content-center">
+											<div class="form-group col-md-2 mt-3">
+												<label class="form-label">Fecha:</label>
+											</div>
+											<div class="form-group col-lg-4 mt-2">
+												<input class="form-control" th:value="${alquiler.fechaAlquiler}" readonly>
+											</div>
+										</div>
+										
+										<div class="row justify-content-center">
+											<div class="form-group col-md-2 mt-3">
+												<label class="form-label">Total:</label>
+											</div>
+											<div class="form-group col-lg-4 mt-2">
+												<input class="form-control" th:value="${alquiler.totalAlquiler}" readonly>
+											</div>
+										</div>
+								    	
+								    	<button class="btn btn-dark mt-2" type="submit">Agregar al Carrito</button>
+								 	</div>
+								 	
+								  	<div class="card-footer text-muted" id="custom-background">
+								  	</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

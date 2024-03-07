@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Productos</title>
+
+<link th:href="@{/general.css}" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap5.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+</head>
+<body>
+	<div id="sidebar">
+	    <div id="header">
+			<div class=" p-1 d-flex align-items-center justify-content-center">
+		        <a class="text-decoration-none text-white fs-4 d-none d-sm-inline btn btn-outline-warning">SASTRERÍA JG</a>
+		    </div>
+	    </div>
+		<ul class="nav nav-pills flex-column mt-3">
+	        <li class="nav-item py-2 py-sm-2">
+	            <a th:href="@{/menu}" class="nav-link text-white">
+	                <i class="fs-5 fas fa-home mr-2"></i><span class="fs-5 ms-3 d-none d-sm-inline">Inicio</span>
+	            </a>
+	        </li>
+	        <li class="nav-item py-2 py-sm-2">
+	            <a th:href="@{/empleado}" class="nav-link text-white ">
+	                <i class="fs-5 fas fa-user-tie"></i><span class="fs-5 ms-3 d-none d-sm-inline">Empleado</span>
+	            </a>
+	        </li>
+	        <li class="nav-item py-2 py-sm-2">
+	            <a th:href="@{/proveedor}" class="nav-link text-white">
+	                <i class="fs-5 fa fa-truck"></i><span class="fs-5 ms-3 d-none d-sm-inline">Proveedor</span>
+	            </a>
+	        </li>
+	        <li class="nav-item py-2 py-sm-2">
+	            <a th:href="@{/cliente}" class="nav-link text-white">
+	                <i class="fs-5 fa fa-solid fa-users"></i><span class="fs-5 ms-3 d-none d-sm-inline">Cliente</span>
+	            </a>
+	        </li>
+	        <li class="nav-item py-2 py-sm-2">
+	            <a th:href="@{/producto}" class="nav-link text-white active_custom">
+	                <i class="fs-5 fa fa-box"></i><span class="fs-5 ms-3 d-none d-sm-inline">Producto</span>
+	            </a>
+	        </li>
+	        <li class="nav-item py-2 py-sm-2">
+	            <a th:href="@{/venta}" class="nav-link text-white">
+	                <i class="fs-5 fa fa-tshirt"></i><span class="fs-5 ms-3 d-none d-sm-inline">Venta</span>
+	            </a>
+	        </li>
+	        <li class="nav-item py-2 py-sm-2">
+	            <a th:href="@{/alquiler}" class="nav-link text-white">
+	                <i class="fs-5 fa fa-stopwatch"></i><span class="fs-5 ms-3 d-none d-sm-inline">Alquiler</span>
+	            </a>
+	        </li>
+	        <li class="nav-item py-2 py-sm-2">
+	            <a th:href="@{/pedido}" class="nav-link text-white">
+	                <i class="fs-5 fa fa-pencil-ruler"></i><span class="fs-5 ms-3 d-none d-sm-inline">Pedido</span>
+	            </a>
+	        </li>
+	        <li class="nav-item py-2 py-sm-2">
+	            <a th:href="@{/recibo}" class="nav-link text-white">
+	                <i class="fs-5 fa fa-file-invoice-dollar"></i><span class="fs-5 ms-3 d-none d-sm-inline">Recibo</span>
+	            </a>
+	        </li>
+	        <li class="nav-item py-2 py-sm-2 barra-abajo">
+	            <a th:href="@{/logout}" class="nav-link text-white">
+	                <i class="fs-5 fa fa-door-open"></i><span class="fs-5 ms-3 d-none d-sm-inline">Logout</span>
+	            </a>
+	        </li> 
+	    </ul>
+	</div>
+	<div id="cuadrado">
+		<div id="content">
+		
+			<div class="container m-1 d-flex justify-content-between align-items-center mb-4">
+			    <h1 class="m-0">Lista de Productos</h1>
+		        <a class="btn btn-warning btn-lg" th:href="@{/producto/producto_registrar}">
+			        <i class="fs-5 fa fa-plus"></i><span class="fs-5 ms-3 d-none d-sm-inline">Agregar Producto</span>
+			    </a>
+			</div>
+		  	
+		  	<div class="container m-1">
+		        <div th:if="${error}" class="alert alert-danger" th:text="${error}"></div>
+		    </div>
+		  	
+		  	<div class="container m-1">
+			    <div class="card">
+				  <div class="card-body">
+				  	<table class="table table-striped mt-3" id="tabla_producto" style="width:100%">
+				        <thead>
+				          <tr class="text-center align-middle encabezado-tabla">
+				            <th>ID</th>
+				            <th>Proveedor</th>
+				            <th>Nombre</th>
+				            <th>Descripcion</th>
+				            <th>Talla</th>
+				            <th>Categoria</th>
+				            <th>Condicion</th>
+				            <th>Precio</th>
+				            <th>Stock</th>
+				            <th></th>
+				            <th></th>
+				          </tr>
+				        </thead>
+				        <tbody>		
+				          <tr class="text-center align-middle" th:each="pro:${productosLista}">
+				            <td th:text="${pro.idProducto}"></td>
+				            <td th:text="${pro.proveedor.razonSocial}"></td>
+				            <td th:text="${pro.nombreProducto}"></td>
+				            <td th:text="${pro.descripcionProducto}"></td>
+				            <td th:text="${pro.tallaProducto}"></td>
+				            <td th:text="${pro.categoria.nombreCate}"></td>
+				            <td th:text="${pro.condicion.nombreCondicion}"></td>
+				            <td th:text="${pro.precioProducto}"></td>
+				            <td th:text="${pro.stockProducto}"></td>
+				            <td><a class="btn btn-success" th:href="@{/producto/producto_editar/{idProducto} (idProducto=${pro.idProducto})}">Editar</a></td>
+				            <td><a class="btn btn-danger" th:href="@{/producto/producto_eliminar/{idProducto} (idProducto=${pro.idProducto})}">Eliminar</a></td>
+				          </tr>
+				        </tbody>
+				      </table>
+			      </div>
+			    </div>
+		    </div>
+		</div>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+	<script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js	"></script>
+	<script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+	<script src="https://cdn.datatables.net/responsive/2.5.0/js/responsive.bootstrap5.min.js"></script>
+	<script>
+		$(document).ready(function() {
+		    $('#tabla_producto').DataTable({
+		        responsive: true,
+		        autoWidth: false,
+		        order: false,
+		        "language": {
+	            "lengthMenu": "Mostrar _MENU_ Registros por página",
+	            "zeroRecords": "Nada encontrado - disculpa",
+	            "info": "Mostrando la página _PAGE_ de _PAGES_",
+	            "infoEmpty": "Registro no disponible",
+	            "infoFiltered": "(filtrado de _MAX_ registros totales)",
+	            'search': 'Buscar:',
+	            'paginate': {
+					'next': 'Siguiente',
+					'previous': 'Anterior'
+				}
+	        }
+		    });
+		});
+	</script>
+</body>
+</html>

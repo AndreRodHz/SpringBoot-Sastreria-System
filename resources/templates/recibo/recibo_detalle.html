@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Detalle de Recibo</title>
+
+	<link th:href="@{/general.css}" rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
+	<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap5.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+	<div id="sidebar">
+	    <div id="header">
+			<div class=" p-1 d-flex align-items-center justify-content-center">
+		        <a class="text-decoration-none text-white fs-4 d-none d-sm-inline btn btn-outline-warning">SASTRERÍA JG</a>
+		    </div>
+	    </div>
+		<ul class="nav nav-pills flex-column mt-3">
+	        <li class="nav-item py-2 py-sm-2">
+	            <a th:href="@{/menu}" class="nav-link text-white">
+	                <i class="fs-5 fas fa-home mr-2"></i><span class="fs-5 ms-3 d-none d-sm-inline">Inicio</span>
+	            </a>
+	        </li>
+	        <li class="nav-item py-2 py-sm-2">
+	            <a th:href="@{/empleado}" class="nav-link text-white">
+	                <i class="fs-5 fas fa-user-tie"></i><span class="fs-5 ms-3 d-none d-sm-inline">Empleado</span>
+	            </a>
+	        </li>
+	        <li class="nav-item py-2 py-sm-2">
+	            <a th:href="@{/proveedor}" class="nav-link text-white">
+	                <i class="fs-5 fa fa-truck"></i><span class="fs-5 ms-3 d-none d-sm-inline">Proveedor</span>
+	            </a>
+	        </li>
+	        <li class="nav-item py-2 py-sm-2">
+	            <a th:href="@{/cliente}" class="nav-link text-white">
+	                <i class="fs-5 fa fa-solid fa-users"></i><span class="fs-5 ms-3 d-none d-sm-inline">Cliente</span>
+	            </a>
+	        </li>
+	        <li class="nav-item py-2 py-sm-2">
+	            <a th:href="@{/producto}" class="nav-link text-white">
+	                <i class="fs-5 fa fa-box"></i><span class="fs-5 ms-3 d-none d-sm-inline">Producto</span>
+	            </a>
+	        </li>
+	        <li class="nav-item py-2 py-sm-2">
+	            <a th:href="@{/venta}" class="nav-link text-white">
+	                <i class="fs-5 fa fa-tshirt"></i><span class="fs-5 ms-3 d-none d-sm-inline">Venta</span>
+	            </a>
+	        </li>
+	        <li class="nav-item py-2 py-sm-2">
+	            <a th:href="@{/alquiler}" class="nav-link text-white">
+	                <i class="fs-5 fa fa-stopwatch"></i><span class="fs-5 ms-3 d-none d-sm-inline">Alquiler</span>
+	            </a>
+	        </li>
+	        <li class="nav-item py-2 py-sm-2">
+	            <a th:href="@{/pedido}" class="nav-link text-white">
+	                <i class="fs-5 fa fa-pencil-ruler"></i><span class="fs-5 ms-3 d-none d-sm-inline">Pedido</span>
+	            </a>
+	        </li>
+	        <li class="nav-item py-2 py-sm-2">
+	            <a th:href="@{/recibo}" class="nav-link text-white active_custom">
+	                <i class="fs-5 fa fa-file-invoice-dollar"></i><span class="fs-5 ms-3 d-none d-sm-inline">Recibo</span>
+	            </a>
+	        </li>
+	        <li class="nav-item py-2 py-sm-2 barra-abajo">
+	            <a th:href="@{/logout}" class="nav-link text-white">
+	                <i class="fs-5 fa fa-door-open"></i><span class="fs-5 ms-3 d-none d-sm-inline">Logout</span>
+	            </a>
+	        </li> 
+	    </ul>
+	</div>
+	
+	<div id="cuadrado">
+		<div id="content">
+			<div class="container m-1 d-flex justify-content-between align-items-center mb-4">
+			    <h1 class="m-0">Detalle de Recibo</h1>
+			    <a class="btn btn-warning" id="master" href="javascript:generarPDF()">
+				    <i class="fs-5 fa fa-file-pdf"></i><span class="fs-5 ms-3 d-none d-sm-inline">Imprimir</span>
+				</a>
+			    <a class="btn btn-secondary" id="master" th:href="@{/recibo}">
+					<i class="fs-5 fa fa-backward"></i><span class="fs-5 ms-3 d-none d-sm-inline">Regresar</span>
+				</a>
+			</div>
+			<div class="container m-1">
+				<div class="card">
+					<div class="card-body">
+						<div class="row">
+							<div class="form-group col-lg-1 mt-2">
+								<label class="form-label">ID Recibo</label>
+								<input class="form-control" id="idRecibo" name="idRecibo" th:value="${recibo.idRecibo}">
+							</div>
+							<div class="form-group col-lg-3 mt-2">
+								<label class="form-label">Cliente</label>
+								<input class="form-control" id="clienteRecibo" name="clienteRecibo" th:value="${recibo.cliente.nombreCliente}">
+							</div>
+							<div class="form-group col-lg-2 mt-2">
+								<label class="form-label">Fecha</label>
+								<input class="form-control" id="fecha" name="fecha" th:value="${recibo.fechaRecibo}">
+							</div>
+							<div class="form-group col-lg-2 mt-2">
+								<label class="form-label">N° Comprobante</label>
+								<input class="form-control" id="comprobante" name="comprobante" th:value="${recibo.numeroComprobanteRecibo}">
+							</div>
+							<div class="form-group col mt-2">
+								<label class="form-label">Monto</label>
+								<input class="form-control" id="baseRecibo" name="baseRecibo" th:value="${recibo.baseRecibo}">
+							</div>
+							<div class="form-group col mt-2">
+								<label class="form-label">Igv</label>
+								<input class="form-control" id="igv" name="igv" th:value="${recibo.impuestoRecibo}">
+							</div>
+							<div class="form-group col mt-2">
+								<label class="form-label">Total</label>
+								<input class="form-control" id="totalRecibo" name="totalRecibo" th:value="${recibo.totalRecibo}">
+							</div>
+						</div>
+					</div>
+				</div>
+				<br>
+				<div class="card">
+					<div class="card-body">
+						<h2>Transacciones</h2>
+						<br>
+						<table class="table w-100">
+							<thead>
+								<tr class="text-center table-warning">
+					                <th>ID</th>
+					                <th>ID</th>
+					                <th>Tipo</th>
+					                <th>Monto</th>
+					            </tr>
+					        </thead>
+					        <tbody>
+					            <tr th:each="detalle : ${detallesRecibo}">
+					                <td class="text-center" th:text="${detalle.transaccion.idTransaccion}"></td>
+					                <td class="text-center" th:text="${detalle.transaccion.idOperacion}"></td>
+					                <td class="text-center" th:text="${detalle.transaccion.tipoTransaccion}"></td>
+					                <td class="text-center" th:text="${detalle.monto}"></td>
+					            </tr>   
+					        </tbody>
+						</table>
+					</div>
+				</div>
+				<div class="card mt-4">
+				    <div class="card-body">
+				        <h2>Información de las Transacciones</h2>
+				        <br>
+				        <div th:each="detalleVenta : ${detallesVenta}">
+				            <div class="card mt-4">
+				                <div class="card-body">
+				                    <h5 class="card-title">Detalle de Venta</h5>
+				                    <table class="table w-100">
+										<thead>
+											<tr class="text-center table-warning">
+								                <th>ID</th>
+								                <th>Producto</th>
+								                <th>Cantidad</th>
+								                <th>Precio U</th>
+								                <th>SubTotal</th>
+								            </tr>
+								        </thead>
+								        <tbody>
+								            <tr th:each="dv : ${detalleVenta}">
+								                <td class="text-center" th:text="${dv.venta.idVenta}"></td>
+								                <td class="text-center" th:text="${dv.producto.nombreProducto}"></td>
+								                <td class="text-center" th:text="${dv.cantidadVenta}"></td>
+								                <td class="text-center" th:text="${dv.precioUnidadVenta}"></td>
+								                <td class="text-center" th:text="${dv.cantidadVenta * dv.precioUnidadVenta}"></td>
+								            </tr>   
+								        </tbody>
+									</table>
+				                </div>
+				            </div>
+				        </div>
+				        <div th:each="detalleAlquiler : ${detallesAlquiler}">
+				            <div class="card mt-4">
+				                <div class="card-body">
+				                    <h5 class="card-title">Detalle de Alquiler</h5>
+				                    <table class="table w-100">
+										<thead>
+											<tr class="text-center table-warning">
+								                <th>ID</th>
+								                <th>Producto</th>
+								                <th>Cantidad</th>
+								                <th>Precio U</th>
+								                <th>SubTotal</th>
+								            </tr>
+								        </thead>
+								        <tbody>
+								            <tr th:each="da : ${detalleAlquiler}">
+								                <td class="text-center" th:text="${da.alquiler.idAlquiler}"></td>
+								                <td class="text-center" th:text="${da.producto.nombreProducto}"></td>
+								                <td class="text-center" th:text="${da.cantidadAlquiler}"></td>
+								                <td class="text-center" th:text="${da.precioUnidadAlquiler}"></td>
+								                <td class="text-center" th:text="${da.cantidadAlquiler * da.precioUnidadAlquiler}"></td>
+								            </tr>   
+								        </tbody>
+									</table>
+				                </div>
+				            </div>
+				        </div>
+				        <div th:each="detallePedido : ${detallesPedido}">
+				            <div class="card mt-4">
+				                <div class="card-body">
+				                    <h5 class="card-title">Detalle de Pedido</h5>
+				                    <table class="table w-100">
+										<thead>
+											<tr class="text-center table-warning">
+								                <th>ID</th>
+								                <th>Producto</th>
+								                <th>Descripción</th>
+								                <th>Cantidad</th>
+								                <th>Precio U</th>
+								                <th>SubTotal</th>
+								            </tr>
+								        </thead>
+								        <tbody>
+								            <tr th:each="dp : ${detallePedido}">
+								                <td class="text-center" th:text="${dp.pedido.idPedido}"></td>
+								                <td class="text-center" th:text="${dp.productoPedido.nombreProductoPedido}"></td>
+								                <td class="text-center" th:text="${dp.descripDetalleP}"></td>
+								                <td class="text-center" th:text="${dp.cantidadDetalleProductoPedido}"></td>
+								                <td class="text-center" th:text="${dp.precioDetalleProductoPedido}"></td>
+								                <td class="text-center" th:text="${dp.cantidadDetalleProductoPedido * dp.precioDetalleProductoPedido}"></td>
+								            </tr>   
+								        </tbody>
+									</table>
+				                </div>
+				            </div>
+				        </div>
+				    </div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="https://unpkg.com/jspdf-invoice-template@1.4.0/dist/index.js"></script>
+	<script th:src="@{/recibo/recibo_detalle.js}"></script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+body {
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+#sidebar {
+    background-color: #333;
+    color: #fff;
+    width: 250px;
+    position: fixed;
+    height: 100%;
+    transition: all 0.3s;
+}
+
+#header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    margin-top: 17px;
+    cursor: pointer;
+}
+
+ul {
+    list-style-type: none;
+    margin-left: 17px;
+    margin-right: 17px;
+}
+
+#content {
+    margin-left: 2%;
+    padding: 20px;
+    
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+#cuadrado {
+	padding-left: 210px;
+}
+
+#custom-padding {
+	padding-top: 3%;
+	padding-left: 10%;
+	padding-right: 10%;
+	padding-bottom: 1%;
+	background-color: #ffc107;
+}
+
+#custom-background {
+	background-color: #ffc107;
+}
+
+.dataTables_wrapper .dataTables_filter {
+    text-align: right;
+}
+
+.dataTables_wrapper .dataTables_paginate {
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.dataTables_wrapper .dataTables_paginate .pagination {
+    justify-content: flex-end;
+}
+
+.nav-pills li a:hover {
+	background-color: #f1b30a;
+}
+
+.nav-pills li a:hover span {
+    color: black;
+}
+
+.nav-pills li a:hover i {
+    color: black;
+}
+
+.nav-pills li.barra-abajo a:hover {
+	background-color: #d01f1f;
+}
+
+.nav-pills li.barra-abajo a:hover span {
+    color: white;
+}
+
+.nav-pills li.barra-abajo a:hover i {
+    color: white;
+}
+
+.encabezado-tabla th {
+    font-size: 16px;
+}
+
+.nav-pills li a.active_custom {
+    background-color: #f1b30a;
+}
+
+.nav-pills li a.active_custom span {
+    color: black;
+}
+
+.nav-pills li a.active_custom i {
+    color: black;
+}
+
+.nav-pills li.barra-abajo{
+    margin-top: 70%;
+}
+
+#master {
+    width: 200px;
+}

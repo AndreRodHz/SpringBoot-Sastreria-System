@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="178.02518mm"
+   height="45.549908mm"
+   viewBox="0 0 178.02517 45.549907"
+   version="1.1"
+   id="svg1"
+   inkscape:export-filename="JG.svg"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   inkscape:version="1.3 (0e150ed6c4, 2023-07-21)"
+   sodipodi:docname="JG.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="1.0343421"
+     inkscape:cx="314.2094"
+     inkscape:cy="-13.051775"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1">
+    <linearGradient
+       id="linearGradient31"
+       inkscape:collect="always">
+      <stop
+         style="stop-color:#b76800;stop-opacity:1;"
+         offset="0"
+         id="stop31" />
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="1"
+         id="stop32" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient29"
+       inkscape:collect="always">
+      <stop
+         style="stop-color:#ff8623;stop-opacity:1;"
+         offset="0"
+         id="stop29" />
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="1"
+         id="stop30" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient27"
+       inkscape:collect="always">
+      <stop
+         style="stop-color:#ff8624;stop-opacity:1;"
+         offset="0"
+         id="stop27" />
+      <stop
+         style="stop-color:#ffd410;stop-opacity:0;"
+         offset="1"
+         id="stop28" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient24"
+       inkscape:collect="always">
+      <stop
+         style="stop-color:#ff8626;stop-opacity:1;"
+         offset="0"
+         id="stop25" />
+      <stop
+         style="stop-color:#fffb56;stop-opacity:0.65263158;"
+         offset="1"
+         id="stop26" />
+    </linearGradient>
+    <inkscape:path-effect
+       effect="powerclip"
+       id="path-effect17"
+       is_visible="true"
+       lpeversion="1"
+       inverse="true"
+       flatten="false"
+       hide_clip="false"
+       message="Utilice la regla de relleno parimpar en el diálogo &lt;b&gt;Relleno y borde&lt;/b&gt; si el resultado no está aplanada después de convertir el recorte en trayectos." />
+    <linearGradient
+       id="swatch14">
+      <stop
+         style="stop-color:#df5e10;stop-opacity:1;"
+         offset="0"
+         id="stop14" />
+    </linearGradient>
+    <linearGradient
+       id="swatch2"
+       inkscape:swatch="solid">
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="0"
+         id="stop2" />
+    </linearGradient>
+    <linearGradient
+       id="swatch1"
+       inkscape:swatch="solid">
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="0"
+         id="stop1" />
+    </linearGradient>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath17">
+      <rect
+         style="display:none;fill:#ff2626;fill-opacity:1;stroke:none;stroke-width:2.72992;stroke-dasharray:none;stroke-opacity:1"
+         id="rect17"
+         width="92.854919"
+         height="39.597836"
+         x="68.76017"
+         y="131.20074"
+         d="m 68.76017,131.20074 h 92.85492 v 39.59784 H 68.76017 Z" />
+      <path
+         id="lpe_path-effect17"
+         style="fill:#ff2626;fill-opacity:1;stroke:none;stroke-width:2.72992;stroke-dasharray:none;stroke-opacity:1"
+         class="powerclip"
+         d="m 29.854621,129.3515 h 50.863336 v 50.86334 H 29.854621 Z m 38.905549,1.84924 v 39.59784 h 92.85492 v -39.59784 z" />
+    </clipPath>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient24"
+       id="linearGradient26"
+       x1="34.854622"
+       y1="154.78317"
+       x2="75.717957"
+       y2="154.78317"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient27"
+       id="linearGradient28"
+       x1="27.25124"
+       y1="26.683172"
+       x2="210.48067"
+       y2="26.683172"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient29"
+       id="linearGradient30"
+       x1="27.25124"
+       y1="26.683172"
+       x2="210.48067"
+       y2="26.683172"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient31"
+       id="linearGradient32"
+       x1="62.865753"
+       y1="44.484989"
+       x2="191.57771"
+       y2="44.484989"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <g
+     inkscape:label="Capa 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-15.347921,-6.3949669)">
+    <path
+       style="fill:none;fill-opacity:1;stroke:url(#linearGradient26);stroke-width:3.02783;stroke-dasharray:none;stroke-opacity:1"
+       id="path1"
+       clip-path="url(#clipPath17)"
+       inkscape:path-effect="#path-effect17"
+       sodipodi:type="arc"
+       sodipodi:cx="55.286289"
+       sodipodi:cy="154.78317"
+       sodipodi:rx="18.917753"
+       sodipodi:ry="18.917753"
+       d="M 74.204042,154.78317 A 18.917753,18.917753 0 0 1 55.286289,173.70093 18.917753,18.917753 0 0 1 36.368536,154.78317 18.917753,18.917753 0 0 1 55.286289,135.86542 18.917753,18.917753 0 0 1 74.204042,154.78317 Z"
+       transform="matrix(1.0737962,0,0,1.008587,-20.303123,-126.60513)"
+       inkscape:export-filename=".\path1.svg"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <text
+       xml:space="preserve"
+       style="font-size:25.5588px;fill:url(#linearGradient30);fill-opacity:1;stroke:none;stroke-width:0.499;stroke-dasharray:none;stroke-opacity:1"
+       x="26.951624"
+       y="35.974445"
+       id="text15"
+       transform="scale(0.90917132,1.0999027)"><tspan
+         id="tspan15"
+         style="fill:url(#linearGradient30);fill-opacity:1;stroke:none;stroke-width:0.499;stroke-dasharray:none;stroke-opacity:1"
+         x="26.951624"
+         y="35.974445"
+         sodipodi:role="line">JG GUERRERO</tspan></text>
+    <rect
+       style="fill:url(#linearGradient32);fill-opacity:1;stroke:none;stroke-width:14.3941;stroke-dasharray:none;stroke-opacity:1"
+       id="rect15"
+       width="128.71196"
+       height="3.151"
+       x="62.865753"
+       y="42.909489" />
+  </g>
+</svg>

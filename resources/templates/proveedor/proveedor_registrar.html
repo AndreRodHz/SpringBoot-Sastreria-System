@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proveedores</title>
+
+<link th:href="@{/general.css}" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<body>
+	<div id="sidebar">
+	    <div id="header">
+			<div class=" p-1 d-flex align-items-center justify-content-center">
+		        <a class="text-decoration-none text-white fs-4 d-none d-sm-inline btn btn-outline-warning">SASTRERÍA JG</a>
+		    </div>
+	    </div>
+		<ul class="nav nav-pills flex-column mt-3">
+	        <li class="nav-item py-2 py-sm-2">
+	            <a th:href="@{/menu}" class="nav-link text-white">
+	                <i class="fs-5 fas fa-home mr-2"></i><span class="fs-5 ms-3 d-none d-sm-inline">Inicio</span>
+	            </a>
+	        </li>
+	        <li class="nav-item py-2 py-sm-2">
+	            <a th:href="@{/empleado}" class="nav-link text-white">
+	                <i class="fs-5 fas fa-user-tie"></i><span class="fs-5 ms-3 d-none d-sm-inline">Empleado</span>
+	            </a>
+	        </li>
+	        <li class="nav-item py-2 py-sm-2">
+	            <a th:href="@{/proveedor}" class="nav-link text-white active_custom">
+	                <i class="fs-5 fa fa-truck"></i><span class="fs-5 ms-3 d-none d-sm-inline">Proveedor</span>
+	            </a>
+	        </li>
+	        <li class="nav-item py-2 py-sm-2">
+	            <a th:href="@{/cliente}" class="nav-link text-white">
+	                <i class="fs-5 fa fa-solid fa-users"></i><span class="fs-5 ms-3 d-none d-sm-inline">Cliente</span>
+	            </a>
+	        </li>
+	        <li class="nav-item py-2 py-sm-2">
+	            <a th:href="@{/producto}" class="nav-link text-white">
+	                <i class="fs-5 fa fa-box"></i><span class="fs-5 ms-3 d-none d-sm-inline">Producto</span>
+	            </a>
+	        </li>
+	        <li class="nav-item py-2 py-sm-2">
+	            <a th:href="@{/venta}" class="nav-link text-white">
+	                <i class="fs-5 fa fa-tshirt"></i><span class="fs-5 ms-3 d-none d-sm-inline">Venta</span>
+	            </a>
+	        </li>
+	        <li class="nav-item py-2 py-sm-2">
+	            <a th:href="@{/alquiler}" class="nav-link text-white">
+	                <i class="fs-5 fa fa-stopwatch"></i><span class="fs-5 ms-3 d-none d-sm-inline">Alquiler</span>
+	            </a>
+	        </li>
+	        <li class="nav-item py-2 py-sm-2">
+	            <a th:href="@{/pedido}" class="nav-link text-white">
+	                <i class="fs-5 fa fa-pencil-ruler"></i><span class="fs-5 ms-3 d-none d-sm-inline">Pedido</span>
+	            </a>
+	        </li>
+	        <li class="nav-item py-2 py-sm-2">
+	            <a th:href="@{/recibo}" class="nav-link text-white">
+	                <i class="fs-5 fa fa-file-invoice-dollar"></i><span class="fs-5 ms-3 d-none d-sm-inline">Recibo</span>
+	            </a>
+	        </li>
+	        <li class="nav-item py-2 py-sm-2 barra-abajo">
+	            <a th:href="@{/logout}" class="nav-link text-white">
+	                <i class="fs-5 fa fa-door-open"></i><span class="fs-5 ms-3 d-none d-sm-inline">Logout</span>
+	            </a>
+	        </li> 
+	    </ul>
+	</div>
+	
+	<div id="cuadrado">
+	    <div id="content">
+	
+			<div class="container m-1 d-flex justify-content-between align-items-center mb-4">
+			    <h1 class="m-0">Registrar Nuevo Proveedor</h1>
+			</div>
+		  	<div class="container m-1">
+			    <div class="card" id="custom-card">
+					<div id="custom-padding" class="card-body">
+						<form th:action="@{/proveedor/proveedor_registrar}" method="post" enctype="multipart/form-data">
+							<div class="row">
+								<div class="form-group col mt-2">
+									<label class="form-label" for="id_proveedor">ID del Proveedor:</label>
+									<input class="form-control" id="idProveedor" name="idProveedor" th:value="${nuevoIdProveedor}" readonly required>
+								</div>
+								<div class="form-group col mt-2">
+									<label class="form-label" for="razon_social">Razon Social:</label>
+									<input class="form-control" id="razonSocial" name="razonSocial" required>
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="form-group col mt-2">
+								 	<label class="form-label" for="ruc_prov">Ruc:</label>
+							     	<input class="form-control" id="rucProveedor" name="rucProveedor" required>
+							  	</div>
+							</div>
+
+							<div class="row">
+								<div class="form-group col mt-2">
+								 	<label class="form-label" for="dir_prov">Direccion:</label>
+								 	<input class="form-control" id="direccionProveedor" name="direccionProveedor">
+							  	</div>
+								<div class="form-group col mt-2">
+								 	<label class="form-label" for="telef_prov">Telefono:</label>
+								 	<input class="form-control" id="telefonoProveedor" name="telefonoProveedor">
+							  	</div>
+							</div>
+							
+							<div class="row">
+								<div class="form-group col mt-2">
+								 	<label class="form-label" for="contacto">Contacto:</label>
+							     	<input class="form-control" id="contactoProveedor" name="contactoProveedor">
+							  	</div>
+							</div>
+
+							<div class="row">
+							  	<div class="form-group col mt-2">
+								 	<label class="form-label" for="correo_prov">Email de Contacto:</label>
+							     	<input class="form-control" id="correoProveedor" name="correoProveedor">
+							  	</div>
+							</div>
+						
+						  	<div class="text-center mt-4">
+							 	<button class="btn btn-dark btn-lg" type="submit">Registrar Proveedor</button>
+						  	</div>
+						</form>
+					</div>
+			    </div>
+		    </div>
+	    </div>
+	</div>
+</body>
+</html>

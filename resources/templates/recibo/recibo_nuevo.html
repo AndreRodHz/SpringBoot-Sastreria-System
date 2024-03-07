@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Nuevo Recibo</title>
+	
+	<link th:href="@{/general.css}" rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
+	<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap5.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+	<div id="sidebar">
+	    <div id="header">
+			<div class=" p-1 d-flex align-items-center justify-content-center">
+		        <a class="text-decoration-none text-white fs-4 d-none d-sm-inline btn btn-outline-warning">SASTRERÍA JG</a>
+		    </div>
+	    </div>
+		<ul class="nav nav-pills flex-column mt-3">
+	        <li class="nav-item py-2 py-sm-2">
+	            <a th:href="@{/menu}" class="nav-link text-white">
+	                <i class="fs-5 fas fa-home mr-2"></i><span class="fs-5 ms-3 d-none d-sm-inline">Inicio</span>
+	            </a>
+	        </li>
+	        <li class="nav-item py-2 py-sm-2">
+	            <a th:href="@{/empleado}" class="nav-link text-white">
+	                <i class="fs-5 fas fa-user-tie"></i><span class="fs-5 ms-3 d-none d-sm-inline">Empleado</span>
+	            </a>
+	        </li>
+	        <li class="nav-item py-2 py-sm-2">
+	            <a th:href="@{/proveedor}" class="nav-link text-white">
+	                <i class="fs-5 fa fa-truck"></i><span class="fs-5 ms-3 d-none d-sm-inline">Proveedor</span>
+	            </a>
+	        </li>
+	        <li class="nav-item py-2 py-sm-2">
+	            <a th:href="@{/cliente}" class="nav-link text-white">
+	                <i class="fs-5 fa fa-solid fa-users"></i><span class="fs-5 ms-3 d-none d-sm-inline">Cliente</span>
+	            </a>
+	        </li>
+	        <li class="nav-item py-2 py-sm-2">
+	            <a th:href="@{/producto}" class="nav-link text-white">
+	                <i class="fs-5 fa fa-box"></i><span class="fs-5 ms-3 d-none d-sm-inline">Producto</span>
+	            </a>
+	        </li>
+	        <li class="nav-item py-2 py-sm-2">
+	            <a th:href="@{/venta}" class="nav-link text-white">
+	                <i class="fs-5 fa fa-tshirt"></i><span class="fs-5 ms-3 d-none d-sm-inline">Venta</span>
+	            </a>
+	        </li>
+	        <li class="nav-item py-2 py-sm-2">
+	            <a th:href="@{/alquiler}" class="nav-link text-white">
+	                <i class="fs-5 fa fa-stopwatch"></i><span class="fs-5 ms-3 d-none d-sm-inline">Alquiler</span>
+	            </a>
+	        </li>
+	        <li class="nav-item py-2 py-sm-2">
+	            <a th:href="@{/pedido}" class="nav-link text-white">
+	                <i class="fs-5 fa fa-pencil-ruler"></i><span class="fs-5 ms-3 d-none d-sm-inline">Pedido</span>
+	            </a>
+	        </li>
+	        <li class="nav-item py-2 py-sm-2">
+	            <a th:href="@{/recibo}" class="nav-link text-white active_custom">
+	                <i class="fs-5 fa fa-file-invoice-dollar"></i><span class="fs-5 ms-3 d-none d-sm-inline">Recibo</span>
+	            </a>
+	        </li>
+	        <li class="nav-item py-2 py-sm-2 barra-abajo">
+	            <a th:href="@{/logout}" class="nav-link text-white">
+	                <i class="fs-5 fa fa-door-open"></i><span class="fs-5 ms-3 d-none d-sm-inline">Logout</span>
+	            </a>
+	        </li> 
+	    </ul>
+	</div>
+
+	<form th:action="@{/recibo/guardar_recibo}" method="post" onsubmit="return validarCampos()">
+		<div id="cuadrado">
+			<div id="content">
+				<div class="container m-1 d-flex justify-content-between align-items-center mb-4">
+				    <h1 class="m-0">Generar Nuevo Recibo</h1>
+				    <a class="btn btn-secondary" id="master" th:href="@{/recibo}">
+						<i class="fs-5 fa fa-backward"></i><span class="fs-5 ms-3 d-none d-sm-inline">Regresar</span>
+					</a>
+				</div>
+				<div class="container m-1">
+				    <div class="card">
+						<div class="card-body">
+							<div class="row">
+								<div class="form-group col mt-2">
+									<label class="form-label" for="numeroDocC">Documento del Cliente:</label>
+									<input class="form-control" id="numeroDocC" name="numeroDocC">
+								</div>
+								<div class="form-group col mt-2">
+							    	<label class="form-label" for="numeroDocC">Acción:</label>
+							    	<br>
+									<button class="btn btn-dark" id="master" type="button" onclick="buscarCliente()">Buscar Cliente</button>
+							  	</div>
+							  	<div class="form-group col mt-2">
+									<label class="form-label" for="numeroDocC">ID del Cliente:</label>
+									<input class="form-control" id="idCliente" name="idCliente" th:value="${clienteBuscar != null ? clienteBuscar.idCliente : ''}" readonly>
+								</div>
+								<div class="form-group col mt-2">
+									<label class="form-label" for="numeroDocC">Nombre del Cliente:</label>
+									<input class="form-control" id="nombreCliente" name="nombreCliente" th:value="${clienteBuscar != null ? clienteBuscar.nombreCliente : ''}" readonly>
+								</div>
+								<div class="form-group col mt-2">
+									<label class="form-label" for="numeroDocC">Numero de Documento:</label>
+									<input class="form-control" id="numeroDocCliente" name="numeroDocCliente" th:value="${clienteBuscar != null ? clienteBuscar.numeroDocCliente : ''}" readonly>
+								</div>
+							</div>
+						</div>
+					</div>
+					<br>
+					<div class="card">
+						<div class="card-body">
+							<div class="row">
+								<div class="form-group col mt-2">
+									<label class="form-label" for="idRecibo">ID del Recibo</label>
+        							<input class="form-control" id="idRecibo" name="idRecibo" th:value="${idRecibo}" required readonly>
+								</div>
+								<div class="form-group col mt-2">
+									<label class="form-label" for="Fecha">Fecha</label>
+									<input class="form-control" id="fechaActual" name="fechaActual" th:value="${#dates.format(fechaActual, 'yyyy-MM-dd')}" readonly>
+								</div>
+								<div class="form-group col mt-2">
+									<label class="form-label" for="Estado">Estado</label>
+									<select class="form-select" id="estado" name="estado" required>
+										<option>Pagado</option><option>Pendiente</option>
+									</select>
+								</div>
+								<div class="form-group col mt-2">
+								    <label class="form-label" for="comprobante">ID del Comprobante</label>
+								    <select class="form-select" id="idComprobante" name="idComprobante" required>
+								        <option th:each="comprobante : ${comprobantes}" th:value="${comprobante.idComprobante}" th:text="${comprobante.idComprobante+ ' ' +comprobante.nombreComprobante}"></option>
+								    </select>
+								</div>
+								<div class="form-group col-lg-3 mt-2">
+								    <label class="form-label" for="n_comprobante">N° del Comprobante</label>
+								    <input class="form-control" id="numeroComprobanteRecibo" name="numeroComprobanteRecibo" required>
+								</div>
+							</div>
+						</div>
+					</div>
+					<br>
+					<div class="card">
+						<div class="card-body">
+							<div class="row justify-content-between">
+								<div class="form-group col">
+									<a class="btn btn-primary" id="master" th:href="@{/recibo/recibo_lista_ventas}">Elegir Venta</a>
+								</div>
+								<div class="form-group col text-center">
+									<a class="btn btn-primary" id="master" th:href="@{/recibo/recibo_lista_alquileres}">Elegir Alquiler</a>
+								</div>
+								<div class="form-group col text-end">
+									<a class="btn btn-primary" id="master" th:href="@{/recibo/recibo_lista_pedidos}">Elegir Pedido</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<br>
+					<div class="card">
+						<div class="card-body">
+							<div class="row">
+								<div class="form-group col mt-2">
+									<h2>Carrito de Transacciones</h2>
+								</div>
+								<div class="form-group col mt-2 text-end">
+									<button class="btn btn-success" id="master" type="submit">Guardar Recibo</button>
+								</div>
+							</div>
+							<br>
+							<table class="table w-100">
+								<thead>
+									<tr class="text-center table-warning">
+						                <th>ID Transaccion</th>
+						                <th>ID</th>
+						                <th>Tipo</th>
+						                <th>Precio Total</th>
+						                <th id="action">Accion</th>
+						            </tr>
+						        </thead>
+						        <tbody>
+						            <tr th:each="detalleRecibo : ${carrito}">
+						                <td class="text-center" th:text="${detalleRecibo.Transaccion.idTransaccion}"></td>
+						                <td class="text-center" th:text="${detalleRecibo.Transaccion.idOperacion}"></td>
+						                <td class="text-center" th:text="${detalleRecibo.Transaccion.tipoTransaccion}"></td>
+						                <td class="text-center" th:text="${detalleRecibo.monto}"></td>
+						                <td class="text-center"><a class="btn btn-danger" th:href="@{/recibo/eliminar_del_carrito/{idTransaccion}(idTransaccion=${detalleRecibo.transaccion.idTransaccion})}">Eliminar</a></td>
+						            </tr>
+						        </tbody>
+							</table>	
+						</div>
+					</div>
+					<br>
+					<div class="card">
+						<div class="card-body">
+							<div class="row">
+								<div class="form-group col">
+									<label class="form-label" for="totalBase">Total Base</label>
+									<input class="form-control" id="totalRecibo" name="totalRecibo" th:value="${totalRecibo}" readonly>
+								</div>
+							  	<div class="form-group col">
+									<label class="form-label" for="Igv">Igv</label>
+									<input class="form-control" id="igv" name="igv" th:value="${igv}" readonly>
+								</div>
+							  	<div class="form-group col">
+									<label class="form-label" for="totalFinal">Total Final</label>
+									<input class="form-control" id="totalFinal" name="totalFinal" th:value="${totalFinal}" readonly>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+	<script th:src="@{/recibo/recibo.js}"></script>
+</body>
+</html>
